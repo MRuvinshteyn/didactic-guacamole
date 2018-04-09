@@ -3,3 +3,8 @@ Brian Leung, Michael Ruvinshteyn, Donia Tung, Jennifer Zhang
 SoftDev2 pd7
 PR01: Viz
 2018-04-0?
+
+
+Each entry should begin with the following format: firstL -- TIMESTAMP\n
+e.g.:
+topherM -- 2999-12-31 23:59

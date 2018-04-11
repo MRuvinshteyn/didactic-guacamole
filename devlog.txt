@@ -12,6 +12,10 @@ topherM -- 2999-12-31 23:59
 leungB -- 2018-04-10 12:41:18
 added log.sh - thank you james smith
 
+ruvinshteynM -- 2018-04-11 12:53:22
+added database to data (includes 2 files -- videos and category ids)
+
 jenniferZ -- 2018-04-11 12:56:43
 added base files
+
 

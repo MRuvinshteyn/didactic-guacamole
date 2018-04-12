@@ -26,3 +26,6 @@ stared on simple data functions
 
 ruvinshteynM -- 2018-04-12 12:51:27
 added updated database
+leungB -- 2018-04-12 12:59:27
+moved js into util/, will continue to integrate the radar chart fxns.
+

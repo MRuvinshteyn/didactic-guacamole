@@ -6,9 +6,8 @@ def parse_csv():
     info = []
     for i in range(0, len(contents)):
         info.append(contents[i].split(","))
-        if info[i] != '':
+        if len(info[i]) > 3:    
             info[i][4] = info[i][4].split("|")
-    
         
     return info
 

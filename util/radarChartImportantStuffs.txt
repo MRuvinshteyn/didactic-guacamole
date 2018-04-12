@@ -1,0 +1,3 @@
+var chart = RadarChart.chart();
+
+RadarChart.draw("#chart-container", data);

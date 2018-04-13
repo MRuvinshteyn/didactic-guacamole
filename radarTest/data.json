@@ -1,0 +1,9 @@
+[
+    [
+      {"area": "Views", "value": 100},
+      {"area": "Likes", "value": 20},
+      {"area": "Comments ", "value": 40},
+      {"area": "Tags", "value": 27},
+      {"area": "Dislikes ", "value": 80}
+  	]
+  ]

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head></head>
+
+<script src="RadarChart.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<div id="chart"></div>
+  
+<script>
+
+var width = 300,
+    height = 300;
+
+var config = {
+    w: width,
+    h: height,
+    maxValue: 1000,
+    levels: 5,
+    ExtraWidthX: 300
+}
+
+d3.json("data.json", function(error, data) {
+    if (error){
+    	throw error;
+	}    	
+    RadarChart.draw("#chart", data, config);
+});
+
+var svg = d3.select('body')
+	.selectAll('svg')
+	.append('svg')
+	.attr("width", width)
+	.attr("height", height);
+
+</script>
+</html>

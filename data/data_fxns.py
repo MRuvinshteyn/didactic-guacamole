@@ -79,8 +79,9 @@ def search_category(cat):
             results.append(d[i])
     return results
         
-d = parse_csv()
-print d[0]
+#d = parse_csv()
+#print d[0]
 #print d[1]
 
 print search_category(24)
+print search_category(30)

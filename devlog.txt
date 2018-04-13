@@ -41,3 +41,6 @@ added searching by category in main javascript file
 ruvinshteynM -- 2018-04-13 00:52:45
 display now divided into functions based on which page is being presented
 
+ruvinshteynM -- 2018-04-13 01:13:58
+replaced category ids with names
+

@@ -38,3 +38,6 @@ started ability to click on circles - only logs name for now
 ruvinshteynM -- 2018-04-13 00:33:45
 added searching by category in main javascript file
 
+ruvinshteynM -- 2018-04-13 00:52:45
+display now divided into functions based on which page is being presented
+

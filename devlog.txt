@@ -32,3 +32,6 @@ moved js into util/, will continue to integrate the radar chart fxns.
 jenniferZ -- 2018-04-12 13:16:33
 worked on search functions
 
+ruvinshteynM -- 2018-04-12 21:49:41
+started ability to click on circles - only logs name for now
+

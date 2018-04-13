@@ -44,3 +44,6 @@ display now divided into functions based on which page is being presented
 ruvinshteynM -- 2018-04-13 01:13:58
 replaced category ids with names
 
+leungB -- 2018-04-13 06:02:54
+discovered incompatibility of radarjs with d3 v3, has been solved
+

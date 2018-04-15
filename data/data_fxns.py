@@ -1,18 +1,4 @@
-
-def parse_csv():
-    f = open("USvideos.csv", "r")
-    contents = f.read().split("\n")
-
-    info = []
-    for i in range(0, len(contents)):
-        curr = contents[i].split(",")
-        #in case of newlines or other nonvalid cases
-        if len(curr) > 6:
-            info.append(curr)
-            #the tags are separated with |
-            info[i][6] = info[i][6].split("|")
-        
-    return info
+import json
 
 #============================================================================================================
 #we dont really need this sad reaccs
@@ -71,6 +57,21 @@ def search(typee, input0, input1):
   '''  
 #============================================================================================================
 
+def parse_csv():
+    f = open("USvideos.csv", "r")
+    contents = f.read().split("\n")
+
+    info = []
+    for i in range(0, len(contents)):
+        curr = contents[i].split(",")
+        #in case of newlines or other nonvalid cases
+        if len(curr) > 6:
+            info.append(curr)
+            #the tags are separated with |
+            info[i][6] = info[i][6].split("|")
+        
+    return info
+
 def search_category(cat):
     d = parse_csv()
     results = []
@@ -83,5 +84,25 @@ def search_category(cat):
 #print d[0]
 #print d[1]
 
-print search_category(24)
-print search_category(30)
+#print search_category(24)
+#print search_category(30)
+
+
+
+
+def parse_json():
+    data = json.load(open('US_category_id.json'))['items']
+    categories = []
+    for i in range(0, len(data)):
+        idd = data[i]['id']
+        title = data[i]['snippet']['title']
+        temp = [idd, title]
+        categories.append(temp)
+
+    return categories
+    
+    
+d = parse_json()
+
+#for i in range(0, len(d)):
+#    print d[i]

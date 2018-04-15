@@ -50,3 +50,6 @@ discovered incompatibility of radarjs with d3 v4, solved it
 leungB -- 2018-04-13 06:19:04
 added little test folder for radar.js, steadily becoming friends with it
 
+jenniferZ -- 2018-04-15 10:16:42
+finished json parser
+

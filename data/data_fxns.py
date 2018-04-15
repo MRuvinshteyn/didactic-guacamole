@@ -40,7 +40,7 @@ def search(typee, input0, input1):
     if(index == 4):
         print "no"
 
-    #numerical 
+    #numerical
     if(index > 4 and index < 9):
         for i in range(0, len(d)):
             if(input1 == -1):
@@ -54,7 +54,7 @@ def search(typee, input0, input1):
                     results.append(d[i])
 
     return results
-  '''  
+  '''
 #============================================================================================================
 
 def parse_csv():
@@ -69,7 +69,7 @@ def parse_csv():
             info.append(curr)
             #the tags are separated with |
             info[i][6] = info[i][6].split("|")
-        
+
     return info
 
 def search_category(cat):
@@ -79,16 +79,37 @@ def search_category(cat):
         if(d[i][4] == str(cat)):
             results.append(d[i])
     return results
-        
-#d = parse_csv()
+
+d = parse_csv()
 #print d[0]
 #print d[1]
 
-#print search_category(24)
+cat39 = search_category(39)
 #print search_category(30)
 
+def get_viewAv(catNum):
+    av = 0;
+    cat = search_category(catNum)
+    for i in cat:
+        av += int(i[7])
+    return av / len(cat)
 
-
+#No vid IDs: 18, 21, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+print get_viewAv(1)
+print get_viewAv(2)
+print get_viewAv(10)
+print get_viewAv(15)
+print get_viewAv(17)
+print get_viewAv(19)
+print get_viewAv(20)
+print get_viewAv(22)
+print get_viewAv(23)
+print get_viewAv(24)
+print get_viewAv(25)
+print get_viewAv(26)
+print get_viewAv(27)
+print get_viewAv(28)
+print get_viewAv(29)
 
 def parse_json():
     data = json.load(open('US_category_id.json'))['items']
@@ -100,9 +121,10 @@ def parse_json():
         categories.append(temp)
 
     return categories
-    
-    
+
+
 d = parse_json()
+
 
 #for i in range(0, len(d)):
 #    print d[i]

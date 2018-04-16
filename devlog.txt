@@ -65,3 +65,6 @@ added index for data from a given index
 ruvinshteynM -- 2018-04-16 18:44:21
 moved files around to make them work with flask -- some duplicates may be present due to the confusion caused
 
+ruvinshteynM -- 2018-04-16 18:52:24
+moved the data function files that were previously left out
+

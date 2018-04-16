@@ -64,37 +64,21 @@ def parse_csv():
     info = []
     for i in range(0, len(contents)):
         curr = contents[i].split(",")
-        #if i == 3:
-        #    print len(curr)
-        #    print curr
-        #in case of commas in entries
         
-        j = 0
+        #in case of commas in entries
         if len(curr) > 16:
+            j = 0
             while j < len(curr) and len(curr) > 16:
-                #print curr[j][0:1]
-                #print "last : " + curr[j][len(curr[j])-1:]
                 if curr[j][0:1] == '"' and curr[j][len(curr[j])-1:] != '"':
-                    #print j
-                    #print "loop " + str(j)
                     store = ''
                     while j < len(curr):
-                        #print str(j) + "<" +  str(len(curr))
                         store += curr[j]
-
                         if curr[j][len(curr[j])-1:] == '"':
                             del curr[j]
                             break
                         del curr[j]
                     curr.insert(j, store)
                 j+=1
-        if len(curr) != 16:
-            print "cry"
-            print len(curr)
-            print curr
-        #curr[6]
-        #if i ==2:
-        #    print len(curr)
         #in case of newlines or other nonvalid cases
         if len(curr) > 6:
             info.append(curr)
@@ -113,6 +97,14 @@ def search_category(cat):
     return results
 
 d = parse_csv()
+
+#prints the number of "incorrect" values
+j = 0
+for i in range(0, len(d)):
+    if len(d[i]) != 16:
+        j+=1
+print j
+
 #print d[0]
 #print d[1]
 #cat39 = search_category(39)

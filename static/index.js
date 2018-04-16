@@ -13,7 +13,7 @@ var displayMenu = function(){
     var pack = d3.pack()
     .size([diameter - 4, diameter - 4]);
 
-    d3.json("data.json", function(error, root) {
+    d3.json("../static/data.json", function(error, root) {
         if (error) throw error;
 
         root = d3.hierarchy(root)
@@ -47,7 +47,7 @@ var changeCategory = function(e){
 //return an array of videos based on their category
 var searchByCategory = function(e){
     var arr = [];
-    d3.csv("/data/USvideos.csv", function(data) {
+    d3.csv("../static/USvideos.csv", function(data) {
         for (var x = 0; x < data.length; x++){
             if (data[x]["category_id"] == e){
                 arr.push(data[x]);

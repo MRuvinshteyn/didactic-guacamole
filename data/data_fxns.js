@@ -66,9 +66,15 @@ while (i < d.length){
 }
 
 var parse_json = function(){
-    
+
     
 };
+
+//returns the information at the specified index for a given video
+var byIndex = function(category, vidInd, dataInd){
+    return search_category(category)[vidInd][dataInd];
+}
+
 
 
 

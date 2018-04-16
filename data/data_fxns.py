@@ -64,9 +64,41 @@ def parse_csv():
     info = []
     for i in range(0, len(contents)):
         curr = contents[i].split(",")
+        #if i == 3:
+        #    print len(curr)
+        #    print curr
+        #in case of commas in entries
+        
+        j = 0
+        if len(curr) > 16:
+            while j < len(curr) and len(curr) > 16:
+                #print curr[j][0:1]
+                #print "last : " + curr[j][len(curr[j])-1:]
+                if curr[j][0:1] == '"' and curr[j][len(curr[j])-1:] != '"':
+                    #print j
+                    #print "loop " + str(j)
+                    store = ''
+                    while j < len(curr):
+                        #print str(j) + "<" +  str(len(curr))
+                        store += curr[j]
+
+                        if curr[j][len(curr[j])-1:] == '"':
+                            del curr[j]
+                            break
+                        del curr[j]
+                    curr.insert(j, store)
+                j+=1
+        if len(curr) != 16:
+            print "cry"
+            print len(curr)
+            print curr
+        #curr[6]
+        #if i ==2:
+        #    print len(curr)
         #in case of newlines or other nonvalid cases
         if len(curr) > 6:
             info.append(curr)
+        
             #the tags are separated with |
             info[i][6] = info[i][6].split("|")
 
@@ -83,8 +115,7 @@ def search_category(cat):
 d = parse_csv()
 #print d[0]
 #print d[1]
-
-cat39 = search_category(39)
+#cat39 = search_category(39)
 #print search_category(30)
 
 def get_viewAv(catNum):
@@ -93,7 +124,7 @@ def get_viewAv(catNum):
     for i in cat:
         av += int(i[7])
     return av / len(cat)
-
+'''
 #No vid IDs: 18, 21, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
 print get_viewAv(1)
 print get_viewAv(2)
@@ -110,6 +141,7 @@ print get_viewAv(26)
 print get_viewAv(27)
 print get_viewAv(28)
 print get_viewAv(29)
+'''
 
 def parse_json():
     data = json.load(open('US_category_id.json'))['items']

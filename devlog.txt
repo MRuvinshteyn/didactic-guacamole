@@ -56,3 +56,6 @@ finished json parser
 tungD -- 2018-04-15 15:55:09
 the circles are now proportional size yay
 
+jenniferZ -- 2018-04-16 11:45:35
+fixed up csv parser for edge cases -- still need to check for newlines
+

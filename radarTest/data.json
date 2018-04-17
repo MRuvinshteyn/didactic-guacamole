@@ -6,4 +6,13 @@
       {"area": "Tags", "value": 27},
       {"area": "Dislikes ", "value": 80}
   	]
-  ]
+  ,
+
+	[
+      {"area": "Views", "value": 10},
+      {"area": "Likes", "value": 30},
+      {"area": "Comments ", "value": 50},
+      {"area": "Tags", "value": 17},
+      {"area": "Dislikes ", "value": 80}
+  	]
+]

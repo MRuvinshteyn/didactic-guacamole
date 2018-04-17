@@ -25,6 +25,7 @@ d3.json("data.json", function(error, data) {
     if (error){
     	throw error;
 	}    	
+    console.log(data);
     RadarChart.draw("#chart", data, config);
 });
 

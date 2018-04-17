@@ -13,7 +13,7 @@ var displayMenu = function(){
     var pack = d3.pack()
     .size([diameter - 4, diameter - 4]);
 
-    d3.json("../static/data.json", function(error, root) {
+    d3.json("static/data.json", function(error, root) {
         if (error) throw error;
 
         root = d3.hierarchy(root)

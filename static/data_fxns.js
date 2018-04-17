@@ -1,3 +1,29 @@
+var data = [];
+
+var csv = d3.csv("static/USvideos.csv", function(d){
+    data.push(d);
+});
+
+console.log(data);
+console.log(data[0]);
+
+var search_category = function(cat){
+    results = [];
+
+    for (var item in data){
+	console.log(item);
+	if(item["category_id"] == cat){
+	    console.log("matched!")
+	    results.push(csv[i]);
+	}
+    }
+    return results;
+};
+
+search_category("22"); 
+//console.log(search_category("31"));
+
+/*
 var parse_csv = function(){
     var f = new File("USvideos.csv");
     f.open("r");
@@ -42,20 +68,7 @@ var parse_csv = function(){
     return info;
 };
 
-var search_category = function(cat){
-    var data = parse_csv();
-    results = [];
-
-    var i = 0;
-    while(i < data.length){
-	if(data[i][4] == cat){
-	    results.push(data[i]);
-	}
-    }
-    return resultsl
-};
-
-var d = parse_csv();
+//var d = parse_csv();
 var num_wrong = 0;
 var i = 0;
 while (i < d.length){
@@ -77,8 +90,8 @@ var byIndex = function(category, vidInd, dataInd){
 
 
 
-
-'''
+*/
+/*
 
 def parse_json():
     data = json.load(open(\'US_category_id.json\'))[\'items\']
@@ -97,4 +110,4 @@ d = parse_json()
 
 #for i in range(0, len(d)):
 #    print d[i]
-'''
+*/

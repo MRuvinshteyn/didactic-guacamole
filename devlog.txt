@@ -71,3 +71,6 @@ moved the data function files that were previously left out
 jenniferZ -- 2018-04-16 20:14:14
 tried to do js qq
 
+tungD -- 2018-04-17 13:07:47
+Fixed it so that the circles are reflecting the number of trending videos in that category
+

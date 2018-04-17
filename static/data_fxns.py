@@ -64,7 +64,7 @@ def parse_csv():
     info = []
     for i in range(0, len(contents)):
         curr = contents[i].split(",")
-        
+
         #in case of commas in entries
         if len(curr) > 16:
             j = 0
@@ -82,7 +82,7 @@ def parse_csv():
         #in case of newlines or other nonvalid cases
         if len(curr) > 6:
             info.append(curr)
-        
+
             #the tags are separated with |
             info[i][6] = info[i][6].split("|")
 
@@ -103,12 +103,26 @@ j = 0
 for i in range(0, len(d)):
     if len(d[i]) != 16:
         j+=1
-print j
+#print j
 
 #print d[0]
 #print d[1]
-#cat39 = search_category(39)
-#print search_category(30)
+print len(search_category(1))
+print len(search_category(2))
+print len(search_category(10))
+print len(search_category(15))
+print len(search_category(17))
+print len(search_category(19))
+print len(search_category(20))
+print len(search_category(22))
+print len(search_category(23))
+print len(search_category(24))
+print len(search_category(25))
+print len(search_category(26))
+print len(search_category(27))
+print len(search_category(28))
+print len(search_category(29))
+
 
 def get_viewAv(catNum):
     av = 0;

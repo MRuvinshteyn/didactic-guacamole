@@ -71,3 +71,6 @@ moved the data function files that were previously left out
 jenniferZ -- 2018-04-16 20:14:14
 tried to do js qq
 
+jenniferZ -- 2018-04-17 13:18:31
+finished js parser functions
+

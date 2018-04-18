@@ -26,6 +26,7 @@ stared on simple data functions
 
 ruvinshteynM -- 2018-04-12 12:51:27
 added updated database
+
 leungB -- 2018-04-12 12:59:27
 moved js into util/, will continue to integrate the radar chart fxns.
 
@@ -80,6 +81,9 @@ added listing works
 ruvinshteynM -- 2018-04-17 20:03:18
 clicking on console logs an array of the videos in the category -- to be used when displaying list of videos
 
-ruvinshteynM -- 2018-04-18 00:16:51
-solved issue of traversing lists -- moved d3.csv() outside of functions to run on startup
+leungB -- 2018-04-17 22:32:37
+added a sortable list demo, need to make a function out of it
 
+ruvinshteynM -- 2018-04-18 00:19:22
+
+solved issue of traversing lists -- moved d3.csv() outside of functions to run on startup

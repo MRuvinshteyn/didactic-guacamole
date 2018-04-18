@@ -2,6 +2,16 @@ var page = "categories"; //which display is currently being shown (categories, v
 var category = null; //which category is being shown -- set to null unless showing a category
 var video = null; //which video is being shown by id -- set to null unless showing a video
 
+//master array of all videos
+var videos = [];
+d3.csv("../static/USvideos.csv", function(data) {
+    for (var x = 0; x < data.length; x++){
+        videos.push(data[x]);
+    }
+    //console.log(videos);
+    //console.log(videos.length);
+});
+
 var svg = d3.select("svg")["_groups"][0][0];
 
 var displayMenu = function(){
@@ -60,13 +70,11 @@ var changeCategory = function(e){
 //return an array of videos based on their category
 var searchByCategory = function(e){
     var arr = [];
-    d3.csv("../static/USvideos.csv", function(data) {
-        for (var x = 0; x < data.length; x++){
-            if (data[x]["category_id"] == e){
-                arr.push(data[x]);
-            }
+    for (var x = 0; x < videos.length; x++){
+        if (videos[x]["category_id"] == e){
+            arr.push(videos[x]);
         }
-    });
+    }
     return arr;
 }
 

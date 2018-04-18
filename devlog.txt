@@ -80,3 +80,6 @@ added listing works
 ruvinshteynM -- 2018-04-17 20:03:18
 clicking on console logs an array of the videos in the category -- to be used when displaying list of videos
 
+ruvinshteynM -- 2018-04-18 00:16:51
+solved issue of traversing lists -- moved d3.csv() outside of functions to run on startup
+

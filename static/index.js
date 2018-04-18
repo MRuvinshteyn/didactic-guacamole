@@ -1,35 +1,32 @@
 var page = "categories"; //which display is currently being shown (categories, videos, info)
 var category = null; //which category is being shown -- set to null unless showing a category
 var video = null; //which video is being shown by id -- set to null unless showing a video
+var progBar = document.getElementById("myBar");
+var progBarAnim;
+var parseProg = 0;
 
 //master array of all videos
 var videos = [];
 d3.csv("../static/USvideos.csv", function(data) {
     var elem = document.getElementById("myBar");
-    for (var x = 0; x < data.length; x++){
-	if (idExists(data[x]['video_id'])){}
-	else{
-	    videos.push(data[x]);
-        elem.style.width = Math.round(x/data.length*100)+'%';
-        elem.innerHTML =  Math.round(x/data.length*100) + '%';
-	   }
+    for (var x = 0; x < data.length; x++)
+    {
+        if (idExists(data[x]['video_id'])){}
+        else
+        {
+            videos.push(data[x]);
+            parseProg = x/data.length
+            moveBar();
+	    }
     }
     console.log(videos);
     console.log(videos.length);
 });
 
-function move() {
-    var elem = document.getElementById("myBar");
-    var width = 0;
-    function frame() {
-        if (width >= 100) {
-            return
-        } else {
-            width++;
-            elem.style.width = width + '%';
-            elem.innerHTML = width * 1 + '%';
-        }
-    }
+function moveBar() {
+    progBar.style.width = Math.round(parseProg)*100 + '%';
+    progBar.innerHTML = Math.round(parseProg)*100 + '%'; 
+    progBarAnim = window.requestAnimationFrame(moveBar);
 }
 
 var idExists = function(id){

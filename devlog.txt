@@ -85,5 +85,4 @@ leungB -- 2018-04-17 22:32:37
 added a sortable list demo, need to make a function out of it
 
 ruvinshteynM -- 2018-04-18 00:19:22
-
 solved issue of traversing lists -- moved d3.csv() outside of functions to run on startup

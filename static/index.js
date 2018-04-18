@@ -25,7 +25,20 @@ var displayMenu = function(){
         .enter().append("g")
         .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
         .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-        .on("click",function(e){changeCategory(e['data']['name'])});
+        .on("click",function(e){
+            var newCategory = e['data']['name'];
+            changeCategory(newCategory);
+            d3.json("static/data.json", function(error, d){
+                if (error) throw error;
+                for (var c = 0; c < d['children'].length; c++){
+                    //console.log(d['children'][c]['name']);
+                    //console.log(newCategory == d['children'][c]['name']);
+                    if (newCategory == d['children'][c]['name']){
+                        console.log(searchByCategory(d['children'][c]['id']));
+                    }
+                }
+            })
+        });
 
         node.append("title")
             .text(function(d) { return d.data.name + "\n" + format(d.value); });

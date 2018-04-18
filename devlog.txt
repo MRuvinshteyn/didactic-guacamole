@@ -77,3 +77,6 @@ Fixed it so that the circles are reflecting the number of trending videos in tha
 leungB -- 2018-04-17 13:18:28
 added listing works
 
+ruvinshteynM -- 2018-04-17 20:03:18
+clicking on console logs an array of the videos in the category -- to be used when displaying list of videos
+

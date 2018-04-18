@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="diyList.css">
 <head>
 	<title>List Demo</title>
 </head>
-<body>
-	
-	<script type="text/javascript"></script>
-	<script src="d3-tablesort/d3-tablesort.js"></script>
+<body>	
 
+	<div id="page-wrap"></div>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="diyList.js"></script>
+	<script>
+		data = [{
+        "raceplace": 1,
+        "name": "R T",
+        "club": "CLUB A",
+        "clocktime": "21:33",
+        "category": "M40",
+        "handicap": "02:30",
+        "racetime": "19:03",
+        "timeplace": 44,
+        "points": 10,
+        "FIELD10": "More Analysis"
+      },
+      {
+        "raceplace": 2,
+        "name": "KM",
+        "club": "CLUB B",
+        "clocktime": "22:13",
+        "category": "M50",
+        "handicap": "00:45",
+        "racetime": "21:28",
+        "timeplace": 91,
+        "points": 8,
+        "FIELD10": "More Analysis"
+      }];
+    
+	diyList.listerine("page-wrap",data);
+	</script>
 </body>
 </html>

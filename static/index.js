@@ -6,11 +6,23 @@ var video = null; //which video is being shown by id -- set to null unless showi
 var videos = [];
 d3.csv("../static/USvideos.csv", function(data) {
     for (var x = 0; x < data.length; x++){
-        videos.push(data[x]);
+	if (idExists(data[x]['video_id'])){}
+	else{
+	    videos.push(data[x]);
+	}
     }
-    //console.log(videos);
-    //console.log(videos.length);
+    console.log(videos);
+    console.log(videos.length);
 });
+
+var idExists = function(id){
+    for (var x = 0; x < videos.length; x++){
+	if (videos[x]['video_id'] == id){
+	    return true;
+	}
+    }
+    return false;
+}
 
 var svg = d3.select("svg")["_groups"][0][0];
 

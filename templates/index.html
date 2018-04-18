@@ -7,7 +7,15 @@
 
 
         <style>
-
+            #myProgress {
+                width: 100%;
+                background-color: grey;
+            }
+            #myBar {
+                width: 1%;
+                height: 30px;
+                background-color: green;
+            }
             circle {
                 fill: rgb(31, 119, 180);
                 fill-opacity: .25;
@@ -28,7 +36,11 @@
         </style>
     </head>
     <body>
+        <div id="myProgress">
+            <div id="myBar">0%</div>
+        </div>
         <svg width="960" height="960"></svg>
+
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <script src = "../static/index.js" ></script>
     </body>

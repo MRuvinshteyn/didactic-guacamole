@@ -92,3 +92,6 @@ rewrapped the list stuff into a nice little fxn
 ruvinshteynM -- 2018-04-18 13:05:20
 duplicates are now removed from the master video array
 
+leungB -- 2018-04-18 13:18:36
+loading bar start
+

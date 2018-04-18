@@ -5,15 +5,32 @@ var video = null; //which video is being shown by id -- set to null unless showi
 //master array of all videos
 var videos = [];
 d3.csv("../static/USvideos.csv", function(data) {
+    var elem = document.getElementById("myBar");
     for (var x = 0; x < data.length; x++){
 	if (idExists(data[x]['video_id'])){}
 	else{
 	    videos.push(data[x]);
-	}
+        elem.style.width = Math.round(x/data.length*100)+'%';
+        elem.innerHTML =  Math.round(x/data.length*100) + '%';
+	   }
     }
     console.log(videos);
     console.log(videos.length);
 });
+
+function move() {
+    var elem = document.getElementById("myBar");
+    var width = 0;
+    function frame() {
+        if (width >= 100) {
+            return
+        } else {
+            width++;
+            elem.style.width = width + '%';
+            elem.innerHTML = width * 1 + '%';
+        }
+    }
+}
 
 var idExists = function(id){
     for (var x = 0; x < videos.length; x++){

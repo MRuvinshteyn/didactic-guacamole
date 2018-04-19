@@ -26,6 +26,7 @@ stared on simple data functions
 
 ruvinshteynM -- 2018-04-12 12:51:27
 added updated database
+
 leungB -- 2018-04-12 12:59:27
 moved js into util/, will continue to integrate the radar chart fxns.
 
@@ -47,6 +48,7 @@ replaced category ids with names
 leungB -- 2018-04-13 06:02:54
 discovered incompatibility of radarjs with d3 v4, solved it
 
+<<<<<<< HEAD
 leungB -- 2018-04-13 06:19:04
 added little test folder for radar.js, steadily becoming friends with it
 
@@ -76,7 +78,61 @@ finished js parser functions
 
 tungD -- 2018-04-17 13:07:47
 Fixed it so that the circles are reflecting the number of trending videos in that category
+=======
+leungB -- 2018-04-13 06:19:04
+added little test folder for radar.js, steadily becoming friends with it
+
+jenniferZ -- 2018-04-15 10:16:42
+finished json parser
+
+tungD -- 2018-04-15 15:55:09
+the circles are now proportional size yay
+
+jenniferZ -- 2018-04-16 11:45:35
+fixed up csv parser for edge cases -- still need to check for newlines
+
+tungD -- 2018-04-16 13:17:58
+added index for data from a given index
+
+ruvinshteynM -- 2018-04-16 18:44:21
+moved files around to make them work with flask -- some duplicates may be present due to the confusion caused
+
+ruvinshteynM -- 2018-04-16 18:52:24
+moved the data function files that were previously left out
+
+jenniferZ -- 2018-04-16 20:14:14
+tried to do js qq
+
+tungD -- 2018-04-17 13:07:47
+Fixed it so that the circles are reflecting the number of trending videos in that category
 
 leungB -- 2018-04-17 13:18:28
 added listing works
+
+ruvinshteynM -- 2018-04-17 20:03:18
+clicking on console logs an array of the videos in the category -- to be used when displaying list of videos
+
+leungB -- 2018-04-17 22:32:37
+added a sortable list demo, need to make a function out of it
+
+ruvinshteynM -- 2018-04-18 00:19:22
+solved issue of traversing lists -- moved d3.csv() outside of functions to run on startup
+leungB -- 2018-04-18 04:13:26
+rewrapped the list stuff into a nice little fxn
+
+ruvinshteynM -- 2018-04-18 13:05:20
+duplicates are now removed from the master video array
+
+ruvinshteynM -- 2018-04-18 13:11:51
+changed sizes in data.json
+
+leungB -- 2018-04-18 13:18:36
+loading bar start
+
+ruvinshteynM -- 2018-04-19 00:14:06
+converted CSV to JSON due to earlier bugs
+>>>>>>> fcb1997aa94c6a11cb823c731b59c66fd7ff16b7
+
+leungB -- 2018-04-19 06:09:22
+added loading circle animation to not leave the user hanging
 

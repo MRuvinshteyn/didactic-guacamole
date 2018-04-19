@@ -2,6 +2,33 @@ var page = "categories"; //which display is currently being shown (categories, v
 var category = null; //which category is being shown -- set to null unless showing a category
 var video = null; //which video is being shown by id -- set to null unless showing a video
 
+//master array of all videos
+var videos = [];
+d3.csv("../static/USvideos.csv", 
+function(data) {
+    for (var x = 0; x < data.length; x++)
+    {
+        if (idExists(data[x]['video_id'])){}
+        else
+        {
+            videos.push(data[x]);
+	    }
+    }
+    document.getElementById("loader").outerHTML = '';
+    console.log(videos);
+    console.log(videos.length);
+});
+
+
+var idExists = function(id){
+    for (var x = 0; x < videos.length; x++){
+    if (videos[x]['video_id'] == id){
+        return true;
+    }
+    }
+    return false;
+}
+
 var svg = d3.select("svg")["_groups"][0][0];
 
 var displayMenu = function(){
@@ -25,10 +52,23 @@ var displayMenu = function(){
         .enter().append("g")
         .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
         .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-        .on("click",function(e){changeCategory(e['data']['name'])});
+        .on("click",function(e){
+            var newCategory = e['data']['name'];
+            changeCategory(newCategory);
+            d3.json("static/data.json", function(error, d){
+                if (error) throw error;
+                for (var c = 0; c < d['children'].length; c++){
+                    //console.log(d['children'][c]['name']);
+                    //console.log(newCategory == d['children'][c]['name']);
+                    if (newCategory == d['children'][c]['name']){
+                        console.log(searchByCategory(d['children'][c]['id']));
+                    }
+                }
+            })
+        });
 
         node.append("title")
-            .text(function(d) { return d.data.name + "\n" + format(d.value); });
+            .text(function(d) { return d.data.name + "\n" + format(d.value) + " videos"; });
 
         node.append("circle")
             .attr("r", function(d) { return d.r; });
@@ -47,13 +87,11 @@ var changeCategory = function(e){
 //return an array of videos based on their category
 var searchByCategory = function(e){
     var arr = [];
-    d3.csv("../static/USvideos.csv", function(data) {
-        for (var x = 0; x < data.length; x++){
-            if (data[x]["category_id"] == e){
-                arr.push(data[x]);
-            }
+    for (var x = 0; x < videos.length; x++){
+        if (videos[x]["category_id"] == e){
+            arr.push(videos[x]);
         }
-    });
+    }
     return arr;
 }
 

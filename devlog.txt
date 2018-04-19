@@ -48,7 +48,6 @@ replaced category ids with names
 leungB -- 2018-04-13 06:02:54
 discovered incompatibility of radarjs with d3 v4, solved it
 
-<<<<<<< HEAD
 leungB -- 2018-04-13 06:19:04
 added little test folder for radar.js, steadily becoming friends with it
 

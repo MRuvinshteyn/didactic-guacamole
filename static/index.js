@@ -1,14 +1,11 @@
 var page = "categories"; //which display is currently being shown (categories, videos, info)
 var category = null; //which category is being shown -- set to null unless showing a category
 var video = null; //which video is being shown by id -- set to null unless showing a video
-var progBar = document.getElementById("myBar");
-var progBarAnim;
-var parseProg = 0;
 
 //master array of all videos
 var videos = [];
-d3.csv("../static/USvideos.csv", function(data) {
-    var elem = document.getElementById("myBar");
+d3.csv("../static/USvideos.csv", 
+function(data) {
     for (var x = 0; x < data.length; x++)
     {
         if (idExists(data[x]['video_id'])){}
@@ -17,21 +14,17 @@ d3.csv("../static/USvideos.csv", function(data) {
             videos.push(data[x]);
 	    }
     }
+    document.getElementById("loader").outerHTML = '';
     console.log(videos);
     console.log(videos.length);
 });
 
-function moveBar() {
-    progBar.style.width = Math.round(parseProg)*100 + '%';
-    progBar.innerHTML = Math.round(parseProg)*100 + '%'; 
-    progBarAnim = window.requestAnimationFrame(moveBar);
-}
 
 var idExists = function(id){
     for (var x = 0; x < videos.length; x++){
-	if (videos[x]['video_id'] == id){
-	    return true;
-	}
+    if (videos[x]['video_id'] == id){
+        return true;
+    }
     }
     return false;
 }

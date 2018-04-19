@@ -13,7 +13,7 @@ var diyList = {
       })
       .on('click', function(d) {
         headers.attr('class', 'header');
-        if (d == "Title" || d == "Channel Title" || d == "Other") { //these keys sort alphabetically
+        if (d == "title" || d == "channel_title" || d == "Other") { //these keys sort alphabetically
           // sorting alphabetically");
           if (sortAscending) {
             rows.sort(function(a, b) {

@@ -15,8 +15,6 @@ d3.csv("../static/USvideos.csv", function(data) {
         else
         {
             videos.push(data[x]);
-            parseProg = x/data.length
-            moveBar();
 	    }
     }
     console.log(videos);
@@ -77,7 +75,7 @@ var displayMenu = function(){
         });
 
         node.append("title")
-            .text(function(d) { return d.data.name + "\n" + format(d.value); });
+            .text(function(d) { return d.data.name + "\n" + format(d.value) + " videos"; });
 
         node.append("circle")
             .attr("r", function(d) { return d.r; });

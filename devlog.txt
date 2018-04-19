@@ -131,7 +131,6 @@ loading bar start
 
 ruvinshteynM -- 2018-04-19 00:14:06
 converted CSV to JSON due to earlier bugs
->>>>>>> fcb1997aa94c6a11cb823c731b59c66fd7ff16b7
 
 leungB -- 2018-04-19 06:09:22
 added loading circle animation to not leave the user hanging

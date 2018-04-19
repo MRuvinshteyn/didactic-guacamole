@@ -22,9 +22,9 @@ function(data) {
 
 var idExists = function(id){
     for (var x = 0; x < videos.length; x++){
-    if (videos[x]['video_id'] == id){
-        return true;
-    }
+        if (videos[x]['video_id'] == id){
+            return true;
+        }
     }
     return false;
 }

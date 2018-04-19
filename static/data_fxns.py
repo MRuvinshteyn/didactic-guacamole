@@ -84,10 +84,23 @@ def parse_csv():
             info.append(curr)
 
             #the tags are separated with |
+            #if i != 0:
             info[i][6] = info[i][6].split("|")
 
     return info
 
+def list_to_dict(li):
+    dic = {}
+    for item in li:
+        #based on video_id:
+        temp = {}
+        i = 0
+        while i < len(item):
+            temp[i] = item[0]
+            i+=1
+        dic[item[0]] = temp
+    return dic
+    
 def search_category(cat):
     d = parse_csv()
     results = []
@@ -96,59 +109,23 @@ def search_category(cat):
             results.append(d[i])
     return results
 
-d = parse_csv()
 
-#prints the number of "incorrect" values
-j = 0
-for i in range(0, len(d)):
-    if len(d[i]) != 16:
-        j+=1
-#print j
+def list_to_json(filename, li):
+    f = open(filename, 'w')
+    json.dump(li, f)
+    f.close()
 
-#print d[0]
-#print d[1]
-print len(search_category(1))
-print len(search_category(2))
-print len(search_category(10))
-print len(search_category(15))
-print len(search_category(17))
-print len(search_category(19))
-print len(search_category(20))
-print len(search_category(22))
-print len(search_category(23))
-print len(search_category(24))
-print len(search_category(25))
-print len(search_category(26))
-print len(search_category(27))
-print len(search_category(28))
-print len(search_category(29))
+def check_json(filename):
+    f = open(filename, 'r')
+    data = json.load(f)
+    print data
 
-
-def get_viewAv(catNum):
-    av = 0;
-    cat = search_category(catNum)
-    for i in cat:
-        av += int(i[7])
-    return av / len(cat)
-'''
-#No vid IDs: 18, 21, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
-print get_viewAv(1)
-print get_viewAv(2)
-print get_viewAv(10)
-print get_viewAv(15)
-print get_viewAv(17)
-print get_viewAv(19)
-print get_viewAv(20)
-print get_viewAv(22)
-print get_viewAv(23)
-print get_viewAv(24)
-print get_viewAv(25)
-print get_viewAv(26)
-print get_viewAv(27)
-print get_viewAv(28)
-print get_viewAv(29)
-'''
-
+li = parse_csv()
+d = list_to_dict(li)
+print d
+#list_to_json('csv_to_json.json', li)
+#check_json('csv_to_json.json')
+    
 def parse_json():
     data = json.load(open('US_category_id.json'))['items']
     categories = []
@@ -160,9 +137,3 @@ def parse_json():
 
     return categories
 
-
-d = parse_json()
-
-
-#for i in range(0, len(d)):
-#    print d[i]

@@ -104,3 +104,6 @@ converted CSV to JSON due to earlier bugs
 leungB -- 2018-04-19 06:09:22
 added loading circle animation to not leave the user hanging
 
+ruvinshteynM -- 2018-04-19 12:57:17
+removed all quotes from USvideos.csv -- fixed glitch caused by separation by quotes :)
+

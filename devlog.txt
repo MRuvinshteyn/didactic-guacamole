@@ -144,3 +144,6 @@ ruvinshteynM -- 2018-04-19 20:24:29
 replaced instances of 
  with <br /> in table display
 
+ruvinshteynM -- 2018-04-19 21:21:03
+started working on category list display; the table isn't showing like it's supposed to :c
+

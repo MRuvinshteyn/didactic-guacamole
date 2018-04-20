@@ -98,8 +98,6 @@ var searchByCategory = function(e){
 }
 
 var displayCategory = function(){
-    var vids = JSON.stringify(searchByCategory(category));
-    diyList.listerine("vimage",vids);
 }
 
 var displayVideo = function(){

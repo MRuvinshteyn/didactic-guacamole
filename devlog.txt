@@ -140,3 +140,7 @@ removed all quotes from USvideos.csv -- fixed glitch caused by separation by quo
 ruvinshteynM -- 2018-04-19 13:17:13
 list test now displays videos correctly
 
+ruvinshteynM -- 2018-04-19 20:24:29
+replaced instances of 
+ with <br /> in table display
+

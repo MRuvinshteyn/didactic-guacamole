@@ -60,6 +60,9 @@ the circles are now proportional size yay
 jenniferZ -- 2018-04-16 11:45:35
 fixed up csv parser for edge cases -- still need to check for newlines
 
+jenniferZ -- 2018-04-16 11:45:35
+started on converting python functions to js
+
 tungD -- 2018-04-16 13:17:58
 added index for data from a given index
 

@@ -137,14 +137,16 @@ var getCatAverage = function(index)
     {   
         average[j]["value"] = Math.floor(average[j]["value"]/counter);
     }
+    console.log("AVERAGE FOR "+origCat);
+    console.log(average);
     return average;
 }
 
-var makeRadarData = function(data)
+var makeRadarData = function(index)
 {   
     //Use with getSingleData
     //Only keeps: tags, views, likes, dislikes, comment_count
-    var copied = JSON.parse(JSON.stringify( data ));
+    var copied = JSON.parse(JSON.stringify( videos[index] ));
     delete copied["category_id"];
     delete copied["channel_title"];
     delete copied["comments_disabled"];
@@ -157,8 +159,25 @@ var makeRadarData = function(data)
     delete copied["thumbnail_link"];
     delete copied["ratings_disabled"];
     copied["tags"] = copied["tags"].split("|").length;
-    var newArr = [];
-    return copied;
+    console.log(copied);
+    var average = getCatAverage(index);
+    var cheese = [
+    {area:"Views",value:Math.floor(100*(copied["views"]/average[0]["value"]))},
+    {area:"Likes",value:Math.floor(100*(copied["likes"]/average[1]["value"]))},
+    {area:"Comments",value:Math.floor(100*(copied["comment_count"]/average[2]["value"]))},
+    {area:"Tags",value:Math.floor(100*(copied["tags"]/average[3]["value"]))},
+    {area:"Dislikes",value:Math.floor(100*(copied["dislikes"]/average[4]["value"]))}
+    ]
+    var avg = [
+    {area:"Views",value:100},
+    {area:"Likes",value:100},
+    {area:"Comments",value:100},
+    {area:"Tags",value:100},
+    {area:"Dislikes",value:100}
+    ]
+    var newArr = [cheese,avg];
+    console.log(newArr);
+    return newArr;
 }
 
 var displayCategory = function(){
@@ -166,7 +185,31 @@ var displayCategory = function(){
 
 var displayVideo = function(){
     //data = 
-    diyList.listerine("table",data);
+    //diyList.listerine("table",data);
+    var config = {
+        w: 300,
+        h: 300,
+        maxValue: 100,
+        levels: 5,
+        ExtraWidthX: 300,
+    }
+    var radarData = makeRadarData(video);
+    var newMax = 0;
+    for (i = 0; i<5; i++)
+    {
+        if (radarData[0][i]["value"]>newMax)
+        {
+            newMax = radarData[0][i]["value"];
+        }
+    }
+    if (newMax<100)
+    {
+        newMax = 100;
+    }
+    config["maxTop"] = newMax;
+    config["maxValue"] = newMax;
+    RadarChart.draw("#radar", radarData, config);
+
 }
 
 //displays different page based on page variable

@@ -15,7 +15,8 @@ var RadarChart = {
      TranslateY: 30,
      ExtraWidthX: 100,
      ExtraWidthY: 100,
-     color: d3.scaleOrdinal().range(["#6F257F", "#CA0D59"])
+     color: d3.scaleOrdinal().range(["#6F257F", "#CA0D59"]),
+     maxTop: 100
     };
 	
     if('undefined' !== typeof options){
@@ -74,8 +75,9 @@ var RadarChart = {
        .style("font-size", "10px")
        .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
        .attr("fill", "#737373")
-       .text((j+1)*100/cfg.levels);
+       .text((j+1)*cfg.maxTop/cfg.levels);
     }
+
 
     series = 0;
 

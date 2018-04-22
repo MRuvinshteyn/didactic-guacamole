@@ -62,8 +62,8 @@ var displayMenu = function(){
                     //console.log(newCategory == d['children'][c]['name']);
                     if (newCategory == d['children'][c]['name']){
                         data = searchByCategory(d['children'][c]['id']);
-			//console.log(data);
-			diyList.listerine('table',data);
+            //console.log(data);
+            diyList.listerine('table',data);
                     }
                 }
             })
@@ -99,11 +99,74 @@ var searchByCategory = function(e){
     return arr;
 }
 
+var getSingleData = function(index)
+{
+    return videos[index];
+}
+
+var getCatAverage = function(index)
+{
+    var origCat = videos[index]["category_id"];
+    var average = [
+        {area:"Views",value:0},
+        {area:"Likes",value:0},
+        {area:"Comments",value:0},
+        {area:"Tags",value:0},
+        {area:"Dislikes",value:0}
+    ]
+    var i = 0;
+    var counter = 0;
+    var temp = {}
+    while (i<videos.length)
+    {
+        if (videos[i]["category_id"] == origCat)
+        {
+            average[0]["value"]+=parseInt(videos[i]["views"]);
+            average[1]["value"]+=parseInt(videos[i]["likes"]);
+            average[2]["value"]+=parseInt(videos[i]["comment_count"]);
+            temp = JSON.parse(JSON.stringify(videos[i]["tags"]));
+            average[3]["value"]+=parseInt(temp.split("|").length);
+            average[4]["value"]+=parseInt(videos[i]["dislikes"]);
+            //console.log(counter)
+            counter+=1;
+        }
+        i+=1;
+    }
+    console.log(counter);
+    for (j = 0;j<5;j++)
+    {   
+        average[j]["value"] = Math.floor(average[j]["value"]/counter);
+    }
+    return average;
+}
+
+var makeRadarData = function(data)
+{   
+    //Use with getSingleData
+    //Only keeps: tags, views, likes, dislikes, comment_count
+    var copied = JSON.parse(JSON.stringify( data ));
+    delete copied["category_id"];
+    delete copied["channel_title"];
+    delete copied["comments_disabled"];
+    delete copied["description"];
+    delete copied["publish_time"];
+    delete copied["title"];
+    delete copied["trending_date"];
+    delete copied["video_error_or_removed"];
+    delete copied["video_id"];
+    delete copied["thumbnail_link"];
+    delete copied["ratings_disabled"];
+    copied["tags"] = copied["tags"].split("|").length;
+    var newArr = [];
+    return copied;
+}
+
 var displayCategory = function(){
 }
 
 var displayVideo = function(){
-
+    //data = 
+    diyList.listerine("table",data);
 }
 
 //displays different page based on page variable

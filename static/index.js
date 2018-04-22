@@ -61,7 +61,9 @@ var displayMenu = function(){
                     //console.log(d['children'][c]['name']);
                     //console.log(newCategory == d['children'][c]['name']);
                     if (newCategory == d['children'][c]['name']){
-                        console.log(searchByCategory(d['children'][c]['id']));
+                        data = searchByCategory(d['children'][c]['id']);
+			//console.log(data);
+			diyList.listerine('table',data);
                     }
                 }
             })

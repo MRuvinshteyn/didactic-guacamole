@@ -5,6 +5,15 @@ https://www.kaggle.com/datasnaek/youtube-new
 
 Provides data of the videos placed on YouTube's daily trending page. This includes the date of the video, the title, the channel name, the category, the tags placed on the video, the amount of views, likes, dislikes, and comments, the link to the thumbnail of the video, boolean values stating whether the comments or ratings have been disabled—as well as the video being taken down—and the description. The sub-dataset that will be used is the one specifically for US videos, as there are csv files for other countries, but we are more intersted in the file for our own. At the moment, the dataset is being constantly updated, so we might follow that directive and post the updated versions when they come out. 
 
+### How to Use:
+
+1. Install flask
+
+2. run `python app.py` in a terminal
+
+3. Open http://localhost:5000/ in a browser of your choice.
+
+4. Enjoy!
 
 ### What is shown?
 

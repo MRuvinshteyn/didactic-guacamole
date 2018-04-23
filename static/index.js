@@ -1,6 +1,7 @@
 var page = "categories"; //which display is currently being shown (categories, videos, info)
 var category = null; //which category is being shown -- set to null unless showing a category
 var video = null; //which video is being shown by id -- set to null unless showing a video
+var category_id = null;
 
 //master array of all videos
 var videos = [];
@@ -53,6 +54,7 @@ var displayMenu = function(){
         .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
         .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
         .on("click",function(e){
+            console.log(e);
             var newCategory = e['data']['name'];
             changeCategory(newCategory);
             d3.json("static/data.json", function(error, d){
@@ -61,9 +63,8 @@ var displayMenu = function(){
                     //console.log(d['children'][c]['name']);
                     //console.log(newCategory == d['children'][c]['name']);
                     if (newCategory == d['children'][c]['name']){
-                        data = searchByCategory(d['children'][c]['id']);
-            //console.log(data);
-            diyList.listerine('table',data);
+                        category_id = d['children'][c]['id'];
+                        //console.log(data);
                     }
                 }
             })
@@ -162,18 +163,18 @@ var makeRadarData = function(index)
     console.log(copied);
     var average = getCatAverage(index);
     var cheese = [
-    {area:"Views",value:Math.floor(100*(copied["views"]/average[0]["value"]))},
-    {area:"Likes",value:Math.floor(100*(copied["likes"]/average[1]["value"]))},
-    {area:"Comments",value:Math.floor(100*(copied["comment_count"]/average[2]["value"]))},
-    {area:"Tags",value:Math.floor(100*(copied["tags"]/average[3]["value"]))},
-    {area:"Dislikes",value:Math.floor(100*(copied["dislikes"]/average[4]["value"]))}
+        {area:"Views",value:Math.floor(100*(copied["views"]/average[0]["value"]))},
+        {area:"Likes",value:Math.floor(100*(copied["likes"]/average[1]["value"]))},
+        {area:"Comments",value:Math.floor(100*(copied["comment_count"]/average[2]["value"]))},
+        {area:"Tags",value:Math.floor(100*(copied["tags"]/average[3]["value"]))},
+        {area:"Dislikes",value:Math.floor(100*(copied["dislikes"]/average[4]["value"]))}
     ]
     var avg = [
-    {area:"Views",value:100},
-    {area:"Likes",value:100},
-    {area:"Comments",value:100},
-    {area:"Tags",value:100},
-    {area:"Dislikes",value:100}
+        {area:"Views",value:100},
+        {area:"Likes",value:100},
+        {area:"Comments",value:100},
+        {area:"Tags",value:100},
+        {area:"Dislikes",value:100}
     ]
     var newArr = [cheese,avg];
     console.log(newArr);
@@ -181,6 +182,8 @@ var makeRadarData = function(index)
 }
 
 var displayCategory = function(){
+    console.log(category_id);
+    makeTable(searchByCategory(category_id));
 }
 
 var displayVideo = function(){
@@ -227,6 +230,38 @@ var display = function(){
 }
 
 display();
+
+var makeTable = function(data){
+    var table = d3.select("#table").append("table");
+    var thead = table.append("thead");
+    var tbody = table.append("tbody");
+    thead.append('tr')
+        .selectAll('th')
+        .data(['Title']).enter()
+        .append('th')
+        .text(function (column) { return column; });
+
+    var rows = tbody.selectAll('tr')
+    .data(data)
+    .enter()
+    .append('tr');
+
+    var cells = rows.selectAll('td')
+    .data(function (row) {
+        return ["title"].map(function (column) {
+            return {column: column, value: row[column]};
+        });
+    })
+    .enter()
+    .append('td')
+    .text(function (d) { return d.value; });
+    
+    tbody.selectAll('tr').on("click",function(e){
+        video = e['video_id'];
+        page = "info";
+        display();        
+    });
+}
 
 var diyList = {
     listerine: function(itemID,data){

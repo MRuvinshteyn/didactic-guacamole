@@ -163,3 +163,6 @@ made functions that trimmed unneeded data for the radar chart
 leungB -- 2018-04-22 19:26:14
 made radar scale to values
 
+ruvinshteynM -- 2018-04-22 22:44:55
+fixed table transition -- still has some asynchronous stuff to work out
+

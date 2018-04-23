@@ -225,6 +225,7 @@ var displayVideo = function(){
 var display = function(){
     svg.innerHTML = "";
     document.getElementById("table").innerHTML = "";
+    document.getElementById("buttondiv").innerHTML = ""; 
     if (page == "categories"){
         document.getElementById("radar").innerHTML = "";
         displayMenu();
@@ -242,7 +243,6 @@ var display = function(){
     }
     if (page == "info"){
         displayVideo();
-        d3.select("#buttondiv").innerHTML = "";
         d3.select("#buttondiv").append("button").attr("id","button")
             .text("Back").on("click",function(){
             video = null;

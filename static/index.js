@@ -33,6 +33,8 @@ var idExists = function(id){
 var svg = d3.select("svg")["_groups"][0][0];
 
 var displayMenu = function(){
+    document.getElementById("table").innerHTML = "";
+    document.getElementById("buttondiv").innerHTML = "";
     var sv = d3.select("svg"),
         diameter = +sv.attr("width"),
         g = sv.append("g").attr("transform", "translate(2,2)"),
@@ -186,7 +188,11 @@ var makeRadarData = function(index)
 
 var displayCategory = function(){
     console.log(category_id);
-    makeTable(searchByCategory(category_id));
+    //makeTable(searchByCategory(category_id));
+    diyList.listerine("table",searchByCategory(category_id));
+    str = document.body.innerHTML;
+    str = str.split("\\n").join("<br>");
+    document.body.innerHTML = str;
 }
 
 var displayVideo = function(){
@@ -226,9 +232,22 @@ var display = function(){
     }
     if (page == "videos"){
         displayCategory();
+        d3.select("#buttondiv").append("button").attr("id","button")
+            .text("Back").on("click",function(){
+            category = null;
+            category_id = null;
+            page = "categories";
+            display();
+        })
     }
     if (page == "info"){
         displayVideo();
+        d3.select("#buttondiv").append("button").attr("id","button")
+            .text("Back").on("click",function(){
+            video = null;
+            page = "videos";
+            display();
+        })
     }
 }
 
@@ -258,7 +277,7 @@ var makeTable = function(data){
     .enter()
     .append('td')
     .text(function (d) { return d.value; });
-    
+
     tbody.selectAll('tr').on("click",function(e){
         video = e['video_id'];
         page = "info";

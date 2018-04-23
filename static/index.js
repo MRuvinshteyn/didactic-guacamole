@@ -5,6 +5,7 @@ var category_id = null;
 
 //master array of all videos
 var videos = [];
+var videosHolder = [];
 d3.csv("../static/USvideos.csv", 
        function(data) {
     for (var x = 0; x < data.length; x++)
@@ -105,10 +106,6 @@ var searchByCategory = function(e){
     return arr;
 }
 
-var getSingleData = function(index)
-{
-    return videos[index];
-}
 
 var getCatAverage = function(index)
 {
@@ -150,7 +147,6 @@ var getCatAverage = function(index)
 
 var makeRadarData = function(index)
 {   
-    //Use with getSingleData
     //Only keeps: tags, views, likes, dislikes, comment_count
     var copied = JSON.parse(JSON.stringify( videos[index] ));
     delete copied["category_id"];
@@ -232,6 +228,7 @@ var display = function(){
     }
     if (page == "videos"){
         displayCategory();
+        attachInfoOnClick();
         d3.select("#buttondiv").append("button").attr("id","button")
             .text("Back").on("click",function(){
             category = null;
@@ -280,6 +277,7 @@ var makeTable = function(data){
 
     tbody.selectAll('tr').on("click",function(e){
         video = e['video_id'];
+        console.log(video);
         page = "info";
         display();        
     });
@@ -333,7 +331,9 @@ var diyList = {
             }
         });
 
-        var rows = table.append('tbody').selectAll('tr')
+        var rows = table.append('tbody')
+        .attr("id","tbod")
+        .selectAll('tr')
         .data(data).enter()
         .append('tr');
         rows.selectAll('td')
@@ -363,3 +363,41 @@ var diyList = {
 
     }
 };
+
+var getVidIndexFromTitle = function(id)
+{
+    function strcmp(a, b)
+    {   
+        return (a<b?-1:(a>b?1:0));  
+    }
+    var i = 0;
+    while (i < videos.length)
+    {
+        console.log("not it");
+        if (videos[i]["video_id"].localeCompare(id) == 0)
+        {
+            console.log("found");
+            break;
+        }
+        i+=1;
+    }
+    return i;
+}
+
+var attachInfoOnClick = function()
+{
+    var rows = document.getElementById("table").getElementsByTagName("tbody")[0].getElementsByTagName("tr").length;
+    var tably = document.getElementById("tbod");
+    for (i=0;i<rows;i++)
+    {
+        tably.rows[i].cells[0].style.color = "blue";
+        tably.rows[i].cells[0].addEventListener("click",function(e)
+        {
+            page = "info";
+            console.log(e.target.innerHTML);
+            video = getVidIndexFromTitle(e.target.innerHTML);
+            console.log("Video: "+video);
+            display();
+        });
+    }
+}

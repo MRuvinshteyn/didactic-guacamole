@@ -225,6 +225,7 @@ var displayVideo = function(){
 //displays different page based on page variable
 var display = function(){
     svg.innerHTML = "";
+    document.getElementById("radar").innerHTML = "";
     document.getElementById("table").innerHTML = "";
     document.getElementById("buttondiv").innerHTML = ""; 
     if (page == "categories"){

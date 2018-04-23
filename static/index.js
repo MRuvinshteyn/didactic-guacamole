@@ -64,12 +64,15 @@ var displayMenu = function(){
                     //console.log(newCategory == d['children'][c]['name']);
                     if (newCategory == d['children'][c]['name']){
                         category_id = d['children'][c]['id'];
+                        page = 'videos';
+                        display();
+                        break;
                         //console.log(data);
                     }
                 }
             })
-            page = "videos";
-            display();
+            //page = "videos";
+            //display();
         });
 
         node.append("title")

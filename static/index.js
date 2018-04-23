@@ -196,11 +196,12 @@ var displayVideo = function(){
     //data = 
     //diyList.listerine("table",data);
     var config = {
-        w: 300,
-        h: 300,
+        w: 400,
+        h: 400,
         maxValue: 100,
         levels: 5,
         ExtraWidthX: 300,
+        TranslateX: 148
     }
     var radarData = makeRadarData(video);
     var newMax = 0;
@@ -243,6 +244,7 @@ var display = function(){
     }
     if (page == "info"){
         displayVideo();
+        document.getElementById("vimage").innerHTML = "";
         d3.select("#buttondiv").append("button").attr("id","button")
             .text("Back").on("click",function(){
             video = null;

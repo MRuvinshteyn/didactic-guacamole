@@ -181,3 +181,6 @@ continuing to solve annoying connector things.
 leungB -- 2018-04-23 03:34:38
 added a line and is now working better
 
+leungB -- 2018-04-23 03:41:13
+tired, mostly finished
+
